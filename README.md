@@ -30,7 +30,7 @@ gem install twitter sqlite3 backburner screencap --no-rdoc --no-ri
 
 On Kali Linux there is an issue where the screencap gem can't identify the platform, a fix will be posted here in the next few days.
 
-## DeleteThatTweet.rb
+## cloner.rb
 
 ### Configure
 
@@ -50,7 +50,7 @@ Only thing should need configuring is the beanstalk config if it's changed.
 
 Just `ruby dtt_worker.rb &` to toss it into the background. I would suggest running a few.
 
-## IDeletedThat.rb
+## bot.rb
 
 ### Configure and Run
 

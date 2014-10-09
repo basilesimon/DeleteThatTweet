@@ -49,7 +49,7 @@ def send_tweet(id)
 		user = user.split('//')[1].split('/')[1]
 		if File.exists? "imgs/deleted/#{id}.png"
 			puts "Deleted tweet/RT \##{id} by #{user}"
-			@client.update_with_media("Deleted tweet/retweet by #{Base64.encode64(user)}: \##{id}", File.open("imgs/deleted/#{id}.png", 'r'))
+			# @client.update_with_media("Deleted tweet/retweet by #{Base64.encode64(user)}: \##{id}", File.open("imgs/deleted/#{id}.png", 'r'))
 			dbstatus = @botdb.execute("INSERT INTO tweets (id) VALUES (?)", [id])
 		end
 	end
