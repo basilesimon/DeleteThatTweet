@@ -27,8 +27,8 @@ class ScreenshotJob
 	else
 		f = Screencap::Fetcher.new(url)
 		screenshot = f.fetch(:output => "imgs/#{id}.png",
-                         :div => 'tweet permalink-tweet',
-                         :width => 1024,
+                         :div => ".expansion-container",
+                         :width => 1600,
                          :height => 768)
 	end
   end
