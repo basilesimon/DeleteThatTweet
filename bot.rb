@@ -2,7 +2,6 @@
 
 require 'twitter'
 require 'sqlite3'
-require 'pry'
 require 'base64'
 
 @client = Twitter::REST::Client.new do |config|
@@ -28,7 +27,12 @@ def get_unique_list
 	done.each do |d|
 		dbarr << d[0].to_s
 	end
-	textfiles = Dir.entries('text')
+	begin
+		textfiles = Dir.entries('text')
+        rescue Errno::ENOENT
+                puts "Required 'text' directory not found, please create it. Exiting..."
+                exit
+        end
 	textfiles.shift
 	textfiles.shift
 	textfiles.each do |x|

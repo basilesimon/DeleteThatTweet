@@ -16,7 +16,7 @@ The twitter bot is the only one that requires `read/write` privs.
 ### Beanstalk Install
 
 ```
-sudo apt-get install beanstalkd
+sudo apt-get install beanstalkd libsqlite3-dev build-essential
 ```
 You then need to edit the `/etc/default/beanstalkd` config file. Uncomment `#START=yes` and I would recommend only listening locally on `127.0.0.1`
 
@@ -28,7 +28,7 @@ gem install twitter sqlite3 backburner screencap --no-rdoc --no-ri
 
 ### Known Issues
 
-On Kali Linux there is an issue where the screencap gem can't identify the platform, a fix will be posted here in the next few days.
+On Kali Linux there is an issue where the screencap gem can't identify the platform. If you find a fix, please post an issue.
 
 ## cloner.rb
 
@@ -39,6 +39,19 @@ Under the `#Twitter Config` comment you need to supply ckey, csec, akey, and ase
 ### Run
 
 Should be as simple as: `ruby deletethattweet.rb`, make sure you have a few workers to handle the screenshots.
+
+```
+Deleted Tweets Archiver v0.2
+Key:
+	 '.' = Tweet recieved
+	 '!' = Screenshot taken
+	 '_' = Checking old tweet
+	 'D' = Deleted tweet found!
+	 'X' = Couldn't take screenshot, user is protected
+	 'V' = Discontinued tracking hour old tweet
+	 'T' = Talking to Twitter timed out
+	 'R' = Rate limit hit
+```
 
 ## dtt_worker.rb
 
