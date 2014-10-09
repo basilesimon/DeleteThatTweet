@@ -107,8 +107,9 @@ def store_deltweet(id)
 end
 
 def delete_storage(id)
-	@checkdb.execute("DELETE from tweets WHERE id = #{id}")
-	File.delete("imgs/#{id}.png") if File.exist?("imgs/#{id}.png")
+	# @checkdb.execute("DELETE from tweets WHERE id = #{id}")
+	# File.delete("imgs/#{id}.png") if File.exist?("imgs/#{id}.png")
+    print " "
 end
 
 def check_tweet(id)
@@ -132,12 +133,14 @@ def check_db
 	current = @checkdb.execute("SELECT * from tweets")
 	print current.count
 	current.each do |item|
-		if (Time.now - Time.parse(item[5]) > 3600)
+		if (Time.now - Time.parse(item[5]) > 5)
 			print 'V'
 			ratehit = check_tweet(item[1])
 			if ratehit == 1
 				return
 			end
+          # Idea: delete this thing so tweets don't get deleted every hour,
+          # but instead, are regularly checked by the program for their deletion.
 			delete_storage(item[1])
 		end
 	end
