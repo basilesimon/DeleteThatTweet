@@ -133,7 +133,7 @@ def check_db
 	current = @checkdb.execute("SELECT * from tweets")
 	print current.count
 	current.each do |item|
-		if (Time.now - Time.parse(item[5]) > 5)
+		if (Time.now - Time.parse(item[5]) > 86400)
 			print 'V'
 			ratehit = check_tweet(item[1])
 			if ratehit == 1
